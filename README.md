@@ -7,10 +7,10 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-[![GitHub stars](https://img.shields.io/github/stars/joeseesun/anything-to-notebooklm?style=social)](https://github.com/joeseesun/anything-to-notebooklm/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/joeseesun/anything-to-notebooklm?style=social)](https://github.com/joeseesun/anything-to-notebooklm/network/members)
-[![GitHub issues](https://img.shields.io/github/issues/joeseesun/anything-to-notebooklm)](https://github.com/joeseesun/anything-to-notebooklm/issues)
-[![GitHub last commit](https://img.shields.io/github/last-commit/joeseesun/anything-to-notebooklm)](https://github.com/joeseesun/anything-to-notebooklm/commits/main)
+[![GitHub stars](https://img.shields.io/github/stars/seventies2025/anything-to-notebooklm?style=social)](https://github.com/seventies2025/anything-to-notebooklm/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/seventies2025/anything-to-notebooklm?style=social)](https://github.com/seventies2025/anything-to-notebooklm/network/members)
+[![GitHub issues](https://img.shields.io/github/issues/seventies2025/anything-to-notebooklm)](https://github.com/seventies2025/anything-to-notebooklm/issues)
+[![GitHub last commit](https://img.shields.io/github/last-commit/seventies2025/anything-to-notebooklm)](https://github.com/seventies2025/anything-to-notebooklm/commits/main)
 
 [快速开始](#-快速开始) • [支持格式](#-支持的内容源) • [使用示例](#-使用示例) • [常见问题](#-常见问题)
 
@@ -20,7 +20,7 @@
 
 ## ✨ 这是什么？
 
-一个 **Claude Code Skill**，让你用自然语言把**任何内容**变成**任何格式**。
+一个 **OpenClaw Skill**，让你用自然语言把**任何内容**变成**任何格式**。
 
 ```
 你说：把这篇微信文章生成播客
@@ -97,21 +97,23 @@ AI ：✅ 25 页 PPT 已生成 → slides.pdf
 
 - ✅ Python 3.9+
 - ✅ Git（macOS/Linux 自带）
+- ✅ OpenClaw（已安装并运行）
 
-**就这两样！** 其他依赖一键自动安装。
+**就这三样！** 其他依赖一键自动安装。
 
 ### 安装（3 步）
 
 ```bash
-# 1. 克隆到 Claude skills 目录
-cd ~/.claude/skills/
-git clone https://github.com/joeseesun/anything-to-notebooklm
+# 1. 克隆到 OpenClaw skills 目录
+cd ~/.openclaw/workspace/skills/
+git clone https://github.com/seventies2025/anything-to-notebooklm
 cd anything-to-notebooklm
 
-# 2. 一键安装所有依赖
-./install.sh
+# 2. 安装所有依赖
+pip3 install -r requirements.txt
 
-# 3. 按提示配置 MCP，然后重启 Claude Code
+# 3. 重启 OpenClaw
+openclaw restart
 ```
 
 ### 首次使用
@@ -244,7 +246,7 @@ https://youtube.com/watch?v=xxx  → YouTube 视频
                │
                ▼
 ┌─────────────────────────────────────┐
-│        Claude Code Skill             │
+│        OpenClaw Skill             │
 │  • 智能识别内容源类型                 │
 │  • 自动调用对应工具                   │
 └──────────────┬──────────────────────┘
@@ -300,31 +302,21 @@ https://youtube.com/watch?v=xxx  → YouTube 视频
 
 ## 🐛 故障排查
 
-### MCP 工具未找到
-
-```bash
-# 测试 MCP 服务器
-python ~/.claude/skills/anything-to-notebooklm/wexin-read-mcp/src/server.py
-
-# 重新安装依赖
-cd ~/.claude/skills/anything-to-notebooklm/wexin-read-mcp
-pip install -r requirements.txt
-playwright install chromium
-```
-
 ### NotebookLM 认证失败
 
 ```bash
-notebooklm login     # 重新登录
-notebooklm list      # 验证
+# 验证认证状态
+notebooklm auth status
+
+# 重新登录
+notebooklm login
 ```
 
 ### 环境检查
 
 ```bash
-./check_env.py       # 13 项全面检查
-./install.sh         # 重新安装
-```
+# 检查依赖是否完整
+python3 -c "import markitdown, whisper, yt_dlp; print('OK')"
 
 ## 🤝 贡献
 

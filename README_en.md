@@ -5,6 +5,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![GitHub stars](https://img.shields.io/github/stars/seventies2025/anything-to-notebooklm?style=social)](https://github.com/seventies2025/anything-to-notebooklm/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/seventies2025/anything-to-notebooklm?style=social)](https://github.com/seventies2025/anything-to-notebooklm/network/members)
 
 [English](README.md) | [中文](README_zh.md)
 
@@ -12,7 +14,7 @@
 
 ## What Is This?
 
-A **Claude Code/OpenClaw Skill** that converts **any content source** into **any output format** powered by [Google NotebookLM](https://notebooklm.google.com/).
+An **OpenClaw Skill** that converts **any content source** into **any output format** powered by [Google NotebookLM](https://notebooklm.google.com/).
 
 ```
 You: Turn this WeChat article into a podcast
@@ -66,21 +68,23 @@ AI: ✅ 25-slide presentation generated → slides.pdf
 
 - ✅ Python 3.9+
 - ✅ Git (pre-installed on macOS/Linux)
+- ✅ OpenClaw (installed and running)
 
 That's it! All other dependencies install automatically.
 
 ### Installation (3 Steps)
 
 ```bash
-# 1. Clone to Claude skills directory
-cd ~/.claude/skills/
-git clone https://github.com/joeseesun/anything-to-notebooklm
+# 1. Clone to OpenClaw skills directory
+cd ~/.openclaw/workspace/skills/
+git clone https://github.com/seventies2025/anything-to-notebooklm
 cd anything-to-notebooklm
 
 # 2. Install all dependencies
-./install.sh
+pip3 install -r requirements.txt
 
-# 3. Configure MCP per the prompts, then restart Claude Code
+# 3. Restart OpenClaw
+openclaw restart
 ```
 
 ### First-Time Setup
@@ -219,7 +223,7 @@ WeChat article → Local MCP fetch → Local conversion → NotebookLM
                │
                ▼
 ┌─────────────────────────────────────┐
-│          Claude Code Skill           │
+│          OpenClaw Skill            │
 │  • Smart content source detection    │
 │  • Auto-invoke appropriate tools     │
 └──────────────┬──────────────────────┘
@@ -279,31 +283,21 @@ Auto-extract, detect, convert, and merge.
 
 ## Troubleshooting
 
-### MCP Tools Not Found
-
-```bash
-# Test MCP server
-python ~/.claude/skills/anything-to-notebooklm/wexin-read-mcp/src/server.py
-
-# Reinstall dependencies
-cd ~/.claude/skills/anything-to-notebooklm/wexin-read-mcp
-pip install -r requirements.txt
-playwright install chromium
-```
-
 ### NotebookLM Auth Failed
 
 ```bash
-notebooklm login     # Re-authenticate
-notebooklm list      # Verify
+# Check auth status
+notebooklm auth status
+
+# Re-authenticate
+notebooklm login
 ```
 
 ### Environment Check
 
 ```bash
-./check_env.py       # 13-point check
-./install.sh         # Reinstall
-```
+# Verify dependencies
+python3 -c "import markitdown, whisper, yt_dlp; print('OK')"
 
 ---
 
