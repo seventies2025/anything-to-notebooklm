@@ -1,11 +1,33 @@
-# Core MCP dependencies
-fastmcp>=0.1.0
-playwright>=1.40.0
+# Core dependencies for anything-to-notebooklm
+
+# File format conversion (Microsoft markitdown)
+markitdown[all]>=0.0.1
+
+# OCR for images
+Pillow>=10.0.0
+tesseract-python>=0.0.1
+
+# Audio transcription
+openai-whisper>=20231117
+
+# YouTube subtitle extraction
+yt-dlp>=2023.12.30
+
+# Web content fetching
 beautifulsoup4>=4.12.0
 lxml>=4.9.0
 
-# File format conversion
-markitdown[all]>=0.0.1
+# ZIP file handling (built-in, listed for clarity)
+# zipfile (stdlib)
 
-# NotebookLM (will be installed from PyPI if available, or from git)
-# notebooklm-py
+# JSON/XML/CSV handling (built-in, listed for clarity)
+# json (stdlib)
+# xml (stdlib)
+# csv (stdlib)
+
+# Optional: Tavily API for search (requires TAVILY_API_KEY env var)
+# tavily>=0.0.1
+
+# Optional: MCP server for WeChat (if using wexin-read-mcp)
+# fastmcp>=0.1.0
+# playwright>=1.40.0
